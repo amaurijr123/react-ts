@@ -1,26 +1,11 @@
-import { ChakraProvider, Box, Center, Input } from "@chakra-ui/react"
-import { MyButton } from "./Button"
-import { login } from "../services/login"
-import { useState} from 'react'
+import { ChakraProvider, Box} from "@chakra-ui/react"
 
-
-export const Card = () => {
-
-  const [ email, setEmail ] = useState<string>('')
+export const Card = ({ children }: any) => {
 
   return(
     <ChakraProvider>
         <Box backgroundColor='#FFFFFF' borderRadius='25px' padding='15px' width='50%'>
-          <Center marginBottom='15px' fontSize='25px'>
-            <h1>Faça o login</h1>
-          </Center>
-          <Center display='flex' flexDirection='column' borderColor='gray.400'>
-            <Input placeholder="email" width='70%' marginBottom='10px' value={email} onChange={(e) => setEmail(e.currentTarget.value)}/>
-            <Input placeholder="password" width='70%'  />
-          </Center>
-          <Center margin='10px'>
-            <MyButton event= {() => login(email)}/>
-          </Center>
+          {children}
         </Box>
     </ChakraProvider>
   );
